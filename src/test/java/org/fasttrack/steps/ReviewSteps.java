@@ -30,12 +30,12 @@ public class ReviewSteps {
     }
 
     @Step
-    public void enterInputFieldsWithoutRatings(String comment, String author, String email, String[] errorMessage, int index, WebDriver driver) {
+    public void enterInputFieldsWithoutRatings(String comment, String author, String email, String[] errorMessage, int index) {
         productDetailsPage.setReviewComment(comment);
         productDetailsPage.setReviewAuthor(author);
         productDetailsPage.setReviewEmail(email);
         productDetailsPage.clickSubmitReview();
-        Assert.assertTrue(productDetailsPage.checkMandatoryFields(errorMessage, index, driver));
+        Assert.assertTrue(productDetailsPage.checkMandatoryFields(errorMessage, index));
     }
 
     @Step
@@ -44,7 +44,7 @@ public class ReviewSteps {
     }
 
     @Step
-    public void checkMandatoryFields(String[] errorMessage, int index, WebDriver driver) {
-        Assert.assertTrue(productDetailsPage.checkMandatoryFields(errorMessage, index, driver));
+    public void checkMandatoryFields(String[] errorMessage, int index) {
+        Assert.assertTrue(productDetailsPage.checkMandatoryFields(errorMessage, index));
     }
 }

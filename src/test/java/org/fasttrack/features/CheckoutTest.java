@@ -69,4 +69,20 @@ public class CheckoutTest {
         checkoutSteps.clickPlaceOrder();
         checkoutSteps.checkOrderMessage();
     }
+
+    @Test
+    public void placeOrderWithDifferentShippingInformation() {
+        driver.manage().window().maximize();
+        searchSteps.searchProduct("Beanie");
+        cartSteps.addProductToCart("Beanie with Logo");
+        searchSteps.searchProduct("Cap");
+        cartSteps.addProductToCart("Cap");
+        cartSteps.clickCartHeader();
+        checkoutSteps.proceedToCheckout();
+        checkoutSteps.enterBillingInformation("Ema", "Thomson", "RO", "Eagle street, no.12", "Rino", "CJ", "45655456", "02789456", "thomson@yahoo.com");
+        checkoutSteps.checkAddDifferentShippingAddress();
+        checkoutSteps.enterShippingInformation("Emilia", "Floppy", "RO", "Slow street, no.10", "Kana", "CJ", "234589");
+        checkoutSteps.clickPlaceOrder();
+        checkoutSteps.checkOrderMessage();
+    }
 }

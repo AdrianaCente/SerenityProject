@@ -61,7 +61,7 @@ public class ReviewTest {
         cartSteps.navigateToDetailsPage("Beanie with Logo");
         reviewSteps.navigateToReviewSection();
         reviewSteps.enterReviewDetails("Review test comment", "", "author@yahoo.com");
-        reviewSteps.checkMandatoryFields(errorMessages, 0, driver);
+        reviewSteps.checkMandatoryFields(errorMessages, 0);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class ReviewTest {
         cartSteps.navigateToDetailsPage("Beanie with Logo");
         reviewSteps.navigateToReviewSection();
         reviewSteps.enterReviewDetails("Review test comment", "Review author", "");
-        reviewSteps.checkMandatoryFields(errorMessages, 0, driver);
+        reviewSteps.checkMandatoryFields(errorMessages, 0);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class ReviewTest {
         cartSteps.navigateToDetailsPage("Beanie with Logo");
         reviewSteps.navigateToReviewSection();
         reviewSteps.enterReviewDetails("Review test comment", "Review author", "author@yahoo");
-        reviewSteps.checkMandatoryFields(errorMessages, 2, driver);
+        reviewSteps.checkMandatoryFields(errorMessages, 2);
     }
 
 
@@ -92,7 +92,7 @@ public class ReviewTest {
         cartSteps.navigateToDetailsPage("Beanie with Logo");
         reviewSteps.navigateToReviewSection();
         reviewSteps.enterReviewDetails("", "Review author", "author@yahoo.com");
-        reviewSteps.checkMandatoryFields(errorMessages, 1, driver);
+        reviewSteps.checkMandatoryFields(errorMessages, 1);
     }
 
     @Test
@@ -101,6 +101,6 @@ public class ReviewTest {
         searchSteps.searchProductByName("Beanie");
         cartSteps.navigateToDetailsPage("Beanie with Logo");
         reviewSteps.navigateToReviewSection();
-        reviewSteps.enterInputFieldsWithoutRatings("Review test comment", "Review author", "author@yahoo.com", errorMessages, 0, driver);
+        reviewSteps.enterInputFieldsWithoutRatings("Review test comment", "Review author", "author@yahoo.com", errorMessages, 0);
     }
 }

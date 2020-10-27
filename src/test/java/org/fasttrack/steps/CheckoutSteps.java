@@ -30,6 +30,23 @@ public class CheckoutSteps {
     }
 
     @Step
+    public void checkAddDifferentShippingAddress() {
+        checkoutPage.clickAddDifferentShippingAddress();
+    }
+
+    @Step
+    public void enterShippingInformation(String firstName, String lastName, String country, String address, String city,
+                                         String county, String zipcode) {
+        checkoutPage.setShippingFirstName(firstName);
+        checkoutPage.setShippingLastName(lastName);
+        checkoutPage.selectShippingCountry(country);
+        checkoutPage.setShippingAddress(address);
+        checkoutPage.setShippingCity(city);
+        checkoutPage.selectShippingCounty(county);
+        checkoutPage.setShippingZipcode(zipcode);
+    }
+
+    @Step
     public void clickPlaceOrder() {
         checkoutPage.clickPlaceOrder();
     }

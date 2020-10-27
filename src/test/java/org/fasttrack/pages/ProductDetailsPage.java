@@ -70,10 +70,10 @@ public class ProductDetailsPage extends PageObject {
         return reviewMessage.getText().equals("Your review is awaiting approval");
     }
 
-    public boolean checkMandatoryFields(String[] mandatoryFieldsMessage, int index, WebDriver driver) {
+    public boolean checkMandatoryFields(String[] mandatoryFieldsMessage, int index) {
         boolean foundAlert = false;
         try {
-            driver.switchTo().alert();
+            getDriver().switchTo().alert();
             foundAlert = true;
         } catch (NoAlertPresentException Ex) {
             foundAlert = false;

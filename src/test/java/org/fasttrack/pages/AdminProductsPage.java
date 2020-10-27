@@ -13,10 +13,10 @@ public class AdminProductsPage extends PageObject {
     @FindBy(css = "#the-list tr")
     private List<WebElementFacade> productsList;
 
-    public void findElementByName(String name, WebDriver driver) {
+    public void findElementByName(String name) {
         for (WebElementFacade item : productsList) {
             if (item.findBy(By.cssSelector(".name>strong>a")).getText().equals(name)) {
-                Actions action = new Actions(driver);
+                Actions action = new Actions(getDriver());
                 action.moveToElement(item).perform();
                 clickOn(item.findBy(By.cssSelector(".trash a")));
                 break;

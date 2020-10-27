@@ -35,7 +35,7 @@ public class AdminProductTest {
         driver.manage().window().maximize();
         adminLoginSteps.adminLogin("admin", "parola11");
         adminProductSteps.navigateToProductsPage();
-        adminProductSteps.removeItem("Red T-Shirt", driver);
+        adminProductSteps.removeItem("Red T-Shirt");
         adminProductSteps.checkRemovedItem("Red T-Shirt");
     }
 }

@@ -26,4 +26,30 @@ public class MyAccountSteps {
     public void checkUpdatedAccountDetails() {
         myAccountPage.checkUpdateAccountDetails();
     }
+
+    @Step
+    public void navigateToBillingAddress() {
+        myAccountPage.clickAccountAddress();
+        myAccountPage.clickEditBillingAddress();
+    }
+
+    @Step
+    public void navigateToShippingAddress() {
+        myAccountPage.clickEditShippingAddress();
+    }
+
+    @Step
+    public void saveBillingAddress() {
+        myAccountPage.clickSaveBillingAddress();
+    }
+
+    @Step
+    public void saveShippingAddress() {
+        myAccountPage.clickSaveShippingAddress();
+    }
+
+    @Step
+    public void checkModifiedBillingAddress() {
+        myAccountPage.verifyBillingAddress();
+    }
 }

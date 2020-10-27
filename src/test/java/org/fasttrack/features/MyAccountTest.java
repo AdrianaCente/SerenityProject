@@ -3,6 +3,7 @@ package org.fasttrack.features;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.fasttrack.steps.CheckoutSteps;
 import org.fasttrack.steps.LoginSteps;
 import org.fasttrack.steps.MyAccountSteps;
 import org.junit.Test;
@@ -21,11 +22,26 @@ public class MyAccountTest {
     @Steps
     private LoginSteps loginSteps;
 
+    @Steps
+    private CheckoutSteps checkoutSteps;
+
     @Test
     public void modifyPassword() {
-        loginSteps.logIn("ema@yahoo.com","1qaz@WSX3edc");
+        loginSteps.logIn("ema@yahoo.com","1qaz@WSX3edc1");
         myAccountSteps.navigateToAccountDetails();
-        myAccountSteps.enterCredentials("ema", "dim", "1qaz@WSX3edc", "1qaz@WSX3edc1", "1qaz@WSX3edc1");
+        myAccountSteps.enterCredentials("ema", "dim", "1qaz@WSX3edc1", "1qaz@WSX3edc", "1qaz@WSX3edc");
         myAccountSteps.checkUpdatedAccountDetails();
+    }
+
+    @Test
+    public void modifyBillingAndShippingAddress() {
+        loginSteps.logIn("emma@yahoo.com","1qaz@WSX3edc");
+        myAccountSteps.navigateToBillingAddress();
+        checkoutSteps.enterBillingInformation("Emma", "Thomson", "RO", "Eagle street, no.12", "Rino", "CJ", "45655456", "02789456", "thomson@yahoo.com");
+        myAccountSteps.saveBillingAddress();
+        myAccountSteps.navigateToShippingAddress();
+        checkoutSteps.enterShippingInformation("Emilia", "Floppy", "RO", "Slow street, no.10", "Kana", "CJ", "234589");
+        myAccountSteps.saveShippingAddress();
+        myAccountSteps.checkModifiedBillingAddress();
     }
 }

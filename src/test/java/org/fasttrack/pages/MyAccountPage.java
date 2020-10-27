@@ -37,6 +37,9 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = ".woocommerce-MyAccount-navigation-link--edit-account a")
     private WebElementFacade accountDetailsLink;
 
+    @FindBy(css = ".woocommerce-MyAccount-navigation-link--edit-address a")
+    private WebElementFacade accountAddress;
+
     @FindBy(css = "#account_first_name")
     private WebElementFacade firstName;
 
@@ -57,6 +60,18 @@ public class MyAccountPage extends PageObject {
 
     @FindBy(css = ".woocommerce-message")
     private WebElementFacade accountMessage;
+
+    @FindBy(xpath = "//h3[text()= 'Billing address']/following-sibling ::a[@class='edit']")
+    private WebElementFacade editBillingInfoButton;
+
+    @FindBy(xpath = "//h3[text()= 'Billing address']/following::button[@class='button']")
+    private WebElementFacade saveBillingInfoButton;
+
+    @FindBy(xpath = "//h3[text()= 'Shipping address']/following-sibling ::a[@class='edit']")
+    private WebElementFacade editShippingInfoButton;
+
+    @FindBy(xpath = "//h3[text()= 'Shipping address']/following::button[@class='button']")
+    private WebElementFacade saveShippingInfoButton;
 
     public void setEmail(String emailValue) {
         typeInto(email, emailValue);
@@ -136,5 +151,29 @@ public class MyAccountPage extends PageObject {
 
     public void clickSaveChangesButton() {
         clickOn(saveButton);
+    }
+
+    public void clickAccountAddress() {
+        clickOn(accountAddress);
+    }
+
+    public void clickEditBillingAddress() {
+        clickOn(editBillingInfoButton);
+    }
+
+    public void clickSaveBillingAddress() {
+        clickOn(saveBillingInfoButton);
+    }
+
+    public void verifyBillingAddress() {
+        accountMessage.containsText("Address changed successfully.");
+    }
+
+    public void clickEditShippingAddress() {
+        clickOn(editShippingInfoButton);
+    }
+
+    public void clickSaveShippingAddress() {
+        clickOn(saveShippingInfoButton);
     }
 }

@@ -42,8 +42,8 @@ public class AdminProductSteps {
     }
 
     @Step
-    public void removeItem(String name, WebDriver driver) {
-        adminProductsPage.findElementByName(name, driver);
+    public void removeItem(String name) {
+        adminProductsPage.findElementByName(name);
     }
 
     @Step

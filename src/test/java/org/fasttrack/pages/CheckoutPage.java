@@ -3,6 +3,7 @@ package org.fasttrack.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.interactions.Actions;
 
 public class CheckoutPage extends PageObject {
     @FindBy(css = "#billing_first_name")
@@ -46,6 +47,30 @@ public class CheckoutPage extends PageObject {
 
     @FindBy(css = "button[name='login']")
     private WebElementFacade loginButton;
+
+    @FindBy(css = "#shipping_first_name")
+    private WebElementFacade shippingFirstName;
+
+    @FindBy(css = "#shipping_last_name")
+    private WebElementFacade shippingLastName;
+
+    @FindBy(css = "#shipping_country")
+    private WebElementFacade shippingCountry;
+
+    @FindBy(css = "input#shipping_address_1")
+    private WebElementFacade shippingAddressOne;
+
+    @FindBy(css = "input#shipping_city")
+    private WebElementFacade shippingCity;
+
+    @FindBy(css = "select#shipping_state")
+    private WebElementFacade shippingState;
+
+    @FindBy(css = "input#shipping_postcode")
+    private WebElementFacade shippingPostcode;
+
+    @FindBy(css = "#ship-to-different-address-checkbox")
+    private WebElementFacade differentShipAddressCheckbox;
 
     public void setFirstName(String fName) {
         typeInto(firstName, fName);
@@ -101,5 +126,39 @@ public class CheckoutPage extends PageObject {
 
     public void clickLoginLink() {
         clickOn(showLoginLink);
+    }
+
+
+    public void setShippingFirstName(String fName) {
+        typeInto(shippingFirstName, fName);
+    }
+
+    public void setShippingLastName(String lName) {
+        typeInto(shippingLastName, lName);
+    }
+
+    public void selectShippingCountry(String country) {
+        shippingCountry.selectByValue(country);
+    }
+
+    public void setShippingAddress(String address) {
+        typeInto(shippingAddressOne, address);
+    }
+
+    public void setShippingCity(String city) {
+        typeInto(shippingCity, city);
+    }
+
+    public void selectShippingCounty(String state) {
+        shippingState.selectByValue(state);
+    }
+
+    public void setShippingZipcode(String zipCode) {
+        typeInto(shippingPostcode, zipCode);
+    }
+
+    public void clickAddDifferentShippingAddress() {
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(differentShipAddressCheckbox).click().build().perform();
     }
 }
