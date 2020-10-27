@@ -19,7 +19,7 @@ public class AdminProductSteps {
     }
 
     @Step
-    public void addNewProduct(String name, String description, String price, String qty) {
+    public void addNewProduct(String name, String description, String price, String qty, String category) {
         adminHomePage.clickProductsMenu();
         adminHomePage.clickAddProduct();
         adminAddProductPage.open();
@@ -30,6 +30,7 @@ public class AdminProductSteps {
         adminAddProductPage.clickManageStock();
         adminAddProductPage.setProductQuantity(qty);
         adminAddProductPage.addImageFromModal();
+        adminAddProductPage.selectCategory(category);
         adminAddProductPage.clickPublish();
     }
 

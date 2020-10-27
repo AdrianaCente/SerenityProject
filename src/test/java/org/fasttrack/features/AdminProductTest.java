@@ -25,7 +25,7 @@ public class AdminProductTest {
     public void addNewProduct() {
         driver.manage().window().maximize();
         adminLoginSteps.adminLogin("admin", "parola11");
-        adminProductSteps.addNewProduct("Red T-Shirt", "red t-shirt description", "27", "10");
+        adminProductSteps.addNewProduct("Red T-Shirt", "red t-shirt description", "27", "10", "Tshirts");
         adminProductSteps.checkAddedProduct("Red T-Shirt");
         driver.close();
     }
