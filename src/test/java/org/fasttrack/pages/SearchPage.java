@@ -99,25 +99,26 @@ public class SearchPage extends PageObject {
     }
 
     public boolean checkProductPriceOnColumns() {
-        int index;
+        int index = 0;
         for (int i = 0; i < productListColumns.size() - 1; i++) {
             if ((productListColumns.get(i).findElements(By.cssSelector("li"))).size() > (productListColumns.get(i + 1).findElements(By.cssSelector("li"))).size()) {
                 index = i;
             } else {
                 index = i + 1;
             }
-            Integer castItemOne = getFormattedValue(productNameList.get(0), ".woocommerce-Price-amount ");
-            List<WebElement> liElementsInColumn = productListColumns.get(index).findElements(By.cssSelector("li"));
-            WebElement elementInColumn = liElementsInColumn.get(liElementsInColumn.size() - 1);
-            String stringPrice = elementInColumn.findElement(By.cssSelector(".woocommerce-Price-amount ")).getText().replaceAll(",", ".");
-            Double doubleFormatPrice = Double.valueOf(stringPrice.substring(0, stringPrice.length() - 4).trim());
-            Integer castLastItem = doubleFormatPrice.intValue();
-            System.out.println(castItemOne);
-            System.out.println(castLastItem);
-            if (castItemOne <= castLastItem) {
-                return true;
-            }
         }
+        Integer castItemOne = getFormattedValue(productNameList.get(0), ".woocommerce-Price-amount ");
+        List<WebElement> liElementsInColumn = productListColumns.get(index).findElements(By.cssSelector("li"));
+        WebElement elementInColumn = liElementsInColumn.get(liElementsInColumn.size() - 1);
+        String stringPrice = elementInColumn.findElement(By.cssSelector(".woocommerce-Price-amount ")).getText().replaceAll(",", ".");
+        Double doubleFormatPrice = Double.valueOf(stringPrice.substring(0, stringPrice.length() - 4).trim());
+        Integer castLastItem = doubleFormatPrice.intValue();
+        System.out.println(castItemOne);
+        System.out.println(castLastItem);
+        if (castItemOne <= castLastItem) {
+            return true;
+        }
+
         return false;
     }
 }
