@@ -46,4 +46,9 @@ public class SearchSteps {
     public void verifySelectedSortOption() {
         Assert.assertTrue(searchPage.checkProductPrice());
     }
+
+    @Step
+    public void verifyProductPriceOnColumns() {
+        Assert.assertTrue(searchPage.checkProductPriceOnColumns());
+    }
 }

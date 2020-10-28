@@ -34,9 +34,19 @@ public class SearchTest {
 
     @Test
     public void searchAndCompareProductPrice() {
+        driver.manage().window().maximize();
         searchSteps.navigateToSearch();
         searchSteps.searchProductByName("t-shirt");
         searchSteps.selectSortOption("price");
         searchSteps.verifySelectedSortOption();
+    }
+
+    @Test
+    public void searchAndCompareProductPriceOnColumns() {
+        driver.manage().window().maximize();
+        searchSteps.navigateToSearch();
+        searchSteps.searchProductByName("t-shirt");
+        searchSteps.selectSortOption("price");
+        searchSteps.verifyProductPriceOnColumns();
     }
 }
