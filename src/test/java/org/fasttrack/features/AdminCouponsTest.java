@@ -28,4 +28,15 @@ public class AdminCouponsTest {
         adminCouponSteps.navigateToCouponPage();
         adminCouponSteps.checkValidCoupons();
     }
+
+    @Test
+    public void addNewCoupon() {
+        driver.manage().window().maximize();
+        adminLoginSteps.adminLogin("admin", "parola11");
+        adminCouponSteps.navigateToCouponPage();
+        adminCouponSteps.navigateToAddCouponPage();
+        adminCouponSteps.addNewCouponDetails("new year coupon", "5");
+        adminCouponSteps.publishCoupon();
+        adminCouponSteps.verifyAddedCoupon();
+    }
 }

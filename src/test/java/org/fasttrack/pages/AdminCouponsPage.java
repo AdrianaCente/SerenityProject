@@ -18,6 +18,30 @@ public class AdminCouponsPage extends PageObject {
     @FindBy(css = "td.column-amount")
     private WebElementFacade expirationDate;
 
+    @FindBy(css = ".page-title-action")
+    private WebElementFacade addCoupon;
+
+    @FindBy(css = "#title")
+    private WebElementFacade couponTitle;
+
+    @FindBy(css = "#coupon_amount")
+    private WebElementFacade couponAmount;
+
+    @FindBy(css = "#expiry_date")
+    private WebElementFacade couponExpirationDate;
+
+    @FindBy(css = ".ui-datepicker-next")
+    private WebElementFacade datePickerNextButton;
+
+    @FindBy(xpath = "//table[@class='ui-datepicker-calendar']/tbody/tr[4]/td[3]")
+    private WebElementFacade couponExpirationSetDate;
+
+    @FindBy(css = "#publishing-action")
+    private WebElementFacade publishButton;
+
+    @FindBy(css = "#message p")
+    private WebElementFacade publishMessage;
+
     public String compareDates() {
         try {
             String pattern = "MMMM dd, yyyy";
@@ -43,5 +67,37 @@ public class AdminCouponsPage extends PageObject {
             }
         }
         return "";
+    }
+
+    public void clickAddCoupon() {
+        clickOn(addCoupon);
+    }
+
+    public void setCouponTitle(String title) {
+        typeInto(couponTitle, title);
+    }
+
+    public void setCouponAmount(String amount) {
+        typeInto(couponAmount, amount);
+    }
+
+    public void setCouponExpirationDate() {
+        clickOn(couponExpirationDate);
+    }
+
+    public void clickNextDatePicker() {
+        clickOn(datePickerNextButton);
+    }
+
+    public void clickDesiredDate() {
+        clickOn(couponExpirationSetDate);
+    }
+
+    public void clickPublishButton() {
+        clickOn(publishButton);
+    }
+
+    public void checkAddedCoupon() {
+        publishMessage.shouldContainText("Coupon updated.");
     }
 }

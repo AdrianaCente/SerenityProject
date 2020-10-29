@@ -185,7 +185,7 @@ public class CartPage extends PageObject {
         Integer cartPriceSubtotal = getFormattedNumber(cartSubtotal, priceSelector);
         Integer couponPercentage = Integer.valueOf(code);
         Integer couponComputedAmount = getFormattedNumber(discountAmount, "td span.woocommerce-Price-amount");
-        if (cartPriceSubtotal / couponComputedAmount == couponPercentage) {
+        if (cartPriceSubtotal * couponPercentage / 100 == couponComputedAmount) {
             return true;
         }
         return false;

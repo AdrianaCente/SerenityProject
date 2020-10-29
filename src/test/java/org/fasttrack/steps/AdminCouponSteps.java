@@ -29,4 +29,29 @@ public class AdminCouponSteps {
     public String getCouponAmount(String title) {
         return adminCouponsPage.getCouponAmount(title);
     }
+
+    @Step
+    public void navigateToAddCouponPage() {
+        adminCouponsPage.clickAddCoupon();
+    }
+
+    @Step
+    public void addNewCouponDetails(String title, String amount) {
+        adminCouponsPage.setCouponTitle(title);
+        adminCouponsPage.setCouponAmount(amount);
+        adminCouponsPage.setCouponExpirationDate();
+        adminCouponsPage.clickNextDatePicker();
+        adminCouponsPage.clickNextDatePicker();
+        adminCouponsPage.clickDesiredDate();
+    }
+
+    @Step
+    public void publishCoupon() {
+        adminCouponsPage.clickPublishButton();
+    }
+
+    @Step
+    public void verifyAddedCoupon() {
+        adminCouponsPage.checkAddedCoupon();
+    }
 }
