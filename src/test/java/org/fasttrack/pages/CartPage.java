@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class CartPage extends PageObject {
 
     @FindBy(css = ".cart-discount")
     private WebElementFacade discountAmount;
+
+    @FindBy(css = ".woocommerce-remove-coupon")
+    private WebElementFacade removeCouponLink;
 
     private String priceSelector = ".woocommerce-Price-amount";
 
@@ -185,5 +189,18 @@ public class CartPage extends PageObject {
             return true;
         }
         return false;
+    }
+
+    public void clickRemoveCouponLink() {
+        try {
+            waitFor(removeCouponLink);
+            clickOn(removeCouponLink);
+        } catch(NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void checkRemovedCoupon() {
+        cartMessage.shouldContainText("Coupon has been removed.");
     }
 }

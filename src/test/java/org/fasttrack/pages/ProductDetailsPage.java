@@ -72,14 +72,16 @@ public class ProductDetailsPage extends PageObject {
 
     public boolean checkMandatoryFields(String[] mandatoryFieldsMessage, int index) {
         boolean foundAlert = false;
+        String alertText = "";
         try {
             getDriver().switchTo().alert();
+            alertText = getDriver().switchTo().alert().getText();
             foundAlert = true;
         } catch (NoAlertPresentException Ex) {
             foundAlert = false;
         }
 
-        if (foundAlert == true) {
+        if (foundAlert == true && alertText.equals("Please select a rating")) {
             return true;
         }
 

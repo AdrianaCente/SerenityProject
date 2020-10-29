@@ -168,7 +168,7 @@ public class MyAccountPage extends PageObject {
         clickOn(saveBillingInfoButton);
     }
 
-    public void verifyBillingAddress() {
+    public void verifyBillingShippingAddress() {
         accountMessage.containsText("Address changed successfully.");
     }
 

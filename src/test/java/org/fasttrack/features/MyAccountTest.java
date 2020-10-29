@@ -27,9 +27,9 @@ public class MyAccountTest {
 
     @Test
     public void modifyPassword() {
-        loginSteps.logIn("ema@yahoo.com","1qaz@WSX3edc1");
+        loginSteps.logIn("ema@yahoo.com","1qaz@WSX3edc");
         myAccountSteps.navigateToAccountDetails();
-        myAccountSteps.enterCredentials("ema", "dim", "1qaz@WSX3edc1", "1qaz@WSX3edc", "1qaz@WSX3edc");
+        myAccountSteps.enterCredentials("ema", "dim", "1qaz@WSX3edc", "1qaz@WSX3edc1", "1qaz@WSX3edc1");
         myAccountSteps.checkUpdatedAccountDetails();
     }
 
@@ -42,6 +42,6 @@ public class MyAccountTest {
         myAccountSteps.navigateToShippingAddress();
         checkoutSteps.enterShippingInformation("Emilia", "Floppy", "RO", "Slow street, no.10", "Kana", "CJ", "234589");
         myAccountSteps.saveShippingAddress();
-        myAccountSteps.checkModifiedBillingAddress();
+        myAccountSteps.checkModifiedBillingShippingAddress();
     }
 }

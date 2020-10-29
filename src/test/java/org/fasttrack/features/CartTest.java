@@ -47,7 +47,7 @@ public class CartTest {
 
     @Test
     public void addToCartTestWhileLoggedIn(){
-        loginSteps.logIn("test@yahoo.com","1qaz@WSX3edc");
+        loginSteps.logIn("emma@yahoo.com","1qaz@WSX3edc");
         searchSteps.navigateToSearch();
         searchSteps.searchProductByName("Beanie");
         cartSteps.addProductToCart(productName);
@@ -129,7 +129,15 @@ public class CartTest {
     }
 
     @Test
-    public void applyCoupon() {
+    public void removeCouponFromCart() {
+        loginSteps.logIn("test@yahoo.com","1qaz@WSX3edc");
+        cartSteps.clickCartHeader();
+        cartSteps.clickRemoveCouponFromCart();
+        cartSteps.checkRemovedCoupon();
+    }
+
+    @Test
+    public void cartApplyCoupon() {
         driver.manage().window().maximize();
         adminLoginSteps.adminLogin("admin", "parola11");
         adminCouponSteps.navigateToCouponPage();

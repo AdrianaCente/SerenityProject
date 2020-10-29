@@ -103,4 +103,14 @@ public class CartSteps {
     public void checkAppliedCoupon(String code) {
         Assert.assertTrue(cartPage.checkAppliedCoupon(code));
     }
+
+    @Step
+    public void clickRemoveCouponFromCart() {
+        cartPage.clickRemoveCouponLink();
+    }
+
+    @Step
+    public void checkRemovedCoupon() {
+        cartPage.checkRemovedCoupon();
+    }
 }

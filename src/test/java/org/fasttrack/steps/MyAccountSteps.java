@@ -49,7 +49,7 @@ public class MyAccountSteps {
     }
 
     @Step
-    public void checkModifiedBillingAddress() {
-        myAccountPage.verifyBillingAddress();
+    public void checkModifiedBillingShippingAddress() {
+        myAccountPage.verifyBillingShippingAddress();
     }
 }

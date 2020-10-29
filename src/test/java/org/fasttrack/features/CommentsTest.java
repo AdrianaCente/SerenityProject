@@ -35,7 +35,7 @@ public class CommentsTest {
         loginSteps.logIn("test@yahoo.com","1qaz@WSX3edc");
         commentsSteps.navigateToBlogPage();
         commentsSteps.navigateToArticleByTitle("TEST POST");
-        commentsSteps.addCommentWhileLoggedIn("Post comment article");
+        commentsSteps.addCommentWhileLoggedIn("Post comment article, by logged in user ");
         commentsSteps.verifyAddedComment();
     }
 }
