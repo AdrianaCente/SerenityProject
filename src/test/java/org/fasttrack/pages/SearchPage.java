@@ -138,7 +138,6 @@ public class SearchPage extends PageObject {
                 index = i;
             }
         }
-        System.out.println(index);
         Integer castItemOne = getFormattedValue(productNameList.get(0), selectorValueFirst);
         List<WebElement> liElementsInColumn = productListColumns.get(index).findElements(By.cssSelector("li"));
         WebElement elementInColumn = liElementsInColumn.get(liElementsInColumn.size() - 1);
@@ -146,8 +145,6 @@ public class SearchPage extends PageObject {
         String stringPrice = elementInColumn.findElement(By.cssSelector(selectorValueLast)).getText().replaceAll(",", ".");
         Double doubleFormatPrice = Double.valueOf(stringPrice.substring(0, stringPrice.length() - 4).trim());
         Integer castLastItem = doubleFormatPrice.intValue();
-        System.out.println(castItemOne);
-        System.out.println(castLastItem);
         if (castItemOne <= castLastItem) {
             return true;
         }
