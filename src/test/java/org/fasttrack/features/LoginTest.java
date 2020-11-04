@@ -28,7 +28,7 @@ public class LoginTest {
 
     @Test
     public void validLoginTest(){
-        loginSteps.logIn("test@yahoo.com","1qaz@WSX3edc");
+        loginSteps.logIn(emailAddressTest,"1qaz@WSX3edc");
         loginSteps.verifyUserIsLoggedIn("test");
     }
 

@@ -97,9 +97,33 @@ public class SearchPage extends PageObject {
         return castPriceInteger;
     }
 
+    public String getPriceSelector(List<WebElementFacade> productList, int index) {
+        String selectorValue= "";
+        if (productList.get(index).findElements(By.cssSelector(".price ins .woocommerce-Price-amount")).size() > 0) {
+            selectorValue = ".price ins .woocommerce-Price-amount";
+        } else {
+            selectorValue = ".woocommerce-Price-amount ";
+        }
+        return selectorValue;
+    }
+
+    public String getPriceSelectorOnColumn(List<WebElement> productList, int index) {
+        String selectorValue= "";
+        if (productList.get(index).findElements(By.cssSelector(".price ins .woocommerce-Price-amount")).size() > 0) {
+            selectorValue = ".price ins .woocommerce-Price-amount";
+        } else {
+            selectorValue = ".woocommerce-Price-amount ";
+        }
+        return selectorValue;
+    }
+
     public boolean checkProductPrice() {
-        Integer castItemOne = getFormattedValue(productNameList.get(0), ".woocommerce-Price-amount ");
-        Integer castLastItem = getFormattedValue(productNameList.get(productNameList.size() - 1), ".woocommerce-Price-amount ");
+        String selectorValueFirst= getPriceSelector(productNameList,0);
+        String selectorValueLast= getPriceSelector(productNameList, productNameList.size() - 1);
+
+        Integer castItemOne = getFormattedValue(productNameList.get(0), selectorValueFirst);
+        Integer castLastItem = getFormattedValue(productNameList.get(productNameList.size() - 1), selectorValueLast);
+
         if (castItemOne <= castLastItem) {
             return true;
         }
@@ -107,18 +131,19 @@ public class SearchPage extends PageObject {
     }
 
     public boolean checkProductPriceOnColumns() {
-        int index = 0;
+        int index = (productListColumns.get(0).findElements(By.cssSelector("li"))).size();
+        String selectorValueFirst= getPriceSelector(productNameList, 0);
         for (int i = 0; i < productListColumns.size() - 1; i++) {
-            if ((productListColumns.get(i).findElements(By.cssSelector("li"))).size() > (productListColumns.get(i + 1).findElements(By.cssSelector("li"))).size()) {
+            if ((productListColumns.get(i).findElements(By.cssSelector("li"))).size() > index) {
                 index = i;
-            } else {
-                index = i + 1;
             }
         }
-        Integer castItemOne = getFormattedValue(productNameList.get(0), ".woocommerce-Price-amount ");
+        System.out.println(index);
+        Integer castItemOne = getFormattedValue(productNameList.get(0), selectorValueFirst);
         List<WebElement> liElementsInColumn = productListColumns.get(index).findElements(By.cssSelector("li"));
         WebElement elementInColumn = liElementsInColumn.get(liElementsInColumn.size() - 1);
-        String stringPrice = elementInColumn.findElement(By.cssSelector(".woocommerce-Price-amount ")).getText().replaceAll(",", ".");
+        String selectorValueLast= getPriceSelectorOnColumn(liElementsInColumn, liElementsInColumn.size() - 1);
+        String stringPrice = elementInColumn.findElement(By.cssSelector(selectorValueLast)).getText().replaceAll(",", ".");
         Double doubleFormatPrice = Double.valueOf(stringPrice.substring(0, stringPrice.length() - 4).trim());
         Integer castLastItem = doubleFormatPrice.intValue();
         System.out.println(castItemOne);
