@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class HomePage extends PageObject {
     @FindBy(css = "input[title='Search for:']")
     private WebElementFacade searchInputField;
 
+    @FindBy(css = "#search-2 .search-field")
+    private WebElementFacade asideSearchInputField;
+
     @FindBy(css = "input[title='Search for:']+input[type='submit']")
     private WebElementFacade searchButton;
 
@@ -45,6 +49,10 @@ public class HomePage extends PageObject {
 
     public void setSearchInputField(String textInput) {
         typeInto(searchInputField, textInput);
+    }
+
+    public void setSearchInputFieldAndPressEnter(String textInput) {
+        asideSearchInputField.sendKeys(textInput + Keys.ENTER);
     }
 
     public void clickSearchButton() {

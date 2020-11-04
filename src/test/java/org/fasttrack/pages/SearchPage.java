@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class SearchPage extends PageObject {
 
@@ -39,6 +40,13 @@ public class SearchPage extends PageObject {
         }
         return false;
     }
+
+//    public boolean checkSearchedProductName(String title) {
+//        Boolean isThere = false;
+//        isThere = findAll(".product").stream().filter(item -> item.findBy(By.cssSelector(".woocommerce-loop-product__title"))
+//                .getText().equals(title)).collect(Collectors.toList()).size() != 0 ? true : false;
+//        return isThere;
+//    }
 
     public void checkSearchedMessage() {
         noItemSearchMessage.shouldContainText("No products were found matching your selection.");

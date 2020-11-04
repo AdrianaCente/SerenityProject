@@ -22,6 +22,12 @@ public class SearchSteps {
     }
 
     @Step
+    public void searchProductByNameByPressingEnter(String searchText) {
+        homePage.open();
+        homePage.setSearchInputFieldAndPressEnter(searchText);
+    }
+
+    @Step
     public void searchProduct(String itemName) {
         navigateToSearch();
         searchProductByName(itemName);
@@ -50,5 +56,10 @@ public class SearchSteps {
     @Step
     public void verifyProductPriceOnColumns() {
         Assert.assertTrue(searchPage.checkProductPriceOnColumns());
+    }
+
+    @Step
+    public void checkProductPost(String title) {
+        Assert.assertTrue(homePage.checkAddedPost(title));
     }
 }

@@ -22,14 +22,6 @@ public class AdminCouponsTest {
     private AdminLoginSteps adminLoginSteps;
 
     @Test
-    public void checkValidCoupons() {
-        driver.manage().window().maximize();
-        adminLoginSteps.adminLogin("admin", "parola11");
-        adminCouponSteps.navigateToCouponPage();
-        adminCouponSteps.checkValidCoupons();
-    }
-
-    @Test
     public void addNewCoupon() {
         driver.manage().window().maximize();
         adminLoginSteps.adminLogin("admin", "parola11");
@@ -38,5 +30,13 @@ public class AdminCouponsTest {
         adminCouponSteps.addNewCouponDetails("new year coupon", "5");
         adminCouponSteps.publishCoupon();
         adminCouponSteps.verifyAddedCoupon();
+    }
+
+    @Test
+    public void checkValidCoupons() {
+        driver.manage().window().maximize();
+        adminLoginSteps.adminLogin("admin", "parola11");
+        adminCouponSteps.navigateToCouponPage();
+        adminCouponSteps.checkValidCoupons();
     }
 }

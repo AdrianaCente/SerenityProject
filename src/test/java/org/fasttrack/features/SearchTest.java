@@ -3,6 +3,7 @@ package org.fasttrack.features;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.fasttrack.steps.AdminPostsSteps;
 import org.fasttrack.steps.SearchSteps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,9 @@ public class SearchTest {
 
     @Steps
     private SearchSteps searchSteps;
+
+    @Steps
+    private AdminPostsSteps adminPostsSteps;
 
     @Test
     public void searchProduct() {
@@ -48,5 +52,12 @@ public class SearchTest {
         searchSteps.searchProductByName("t-shirt");
         searchSteps.selectSortOption("price");
         searchSteps.verifyProductPriceOnColumns();
+    }
+
+    @Test
+    public void searchProductWithEnterKey() {
+        driver.manage().window().maximize();
+        searchSteps.searchProductByNameByPressingEnter(searchProduct);
+        searchSteps.checkProductPost("Beanie with Logo");
     }
 }
