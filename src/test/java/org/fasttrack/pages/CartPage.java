@@ -128,35 +128,6 @@ public class CartPage extends PageObject {
         clickOn(product.findBy(By.cssSelector(".remove")));
     }
 
-//    public void emptyCart() {
-//        while (cartListItems.size() > 1) {
-//            System.out.println("1=" + (cartListItems.size()));
-//            waitFor(cartListItems.get(0));
-//            clickOn(cartListItems.get(0).findBy(By.cssSelector(".product-remove a")));
-//            waitFor(cartMessage);
-//            Assert.assertTrue(cartMessage.getText().contains("removed. Undo?"));
-//            waitFor(cartListItems.size());
-//            System.out.println("2=" + (cartListItems.size()));
-//        }
-//        System.out.println("3=" + (cartListItems.size()));
-//        waitFor(cartListItems.get(0));
-//        clickOn(cartListItems.get(0).findBy(By.cssSelector(".product-remove a")));
-//    }
-
-//    public void emptyCart() {
-//        for (int i = cartListItems.size(); i > 1; i--) {
-//            System.out.println(i);
-//            String productName = cartListItems.get(i-1).findBy(By.cssSelector(".product-name a")).getText();
-//            removeItemFromCart(productName);
-//            waitFor(cartMessage);
-//            System.out.println(i);
-//        }
-//        System.out.println(cartListItems.size());
-//        String productName = cartListItems.get(0).findBy(By.cssSelector(".product-name a")).getText();
-//        System.out.println(productName);
-//        removeItemFromCart(productName);
-//    }
-
     public void emptyCart() {
         for (WebElementFacade item : cartListItems) {
             typeInto(item.findBy(By.cssSelector(".product-quantity input")), "0");
